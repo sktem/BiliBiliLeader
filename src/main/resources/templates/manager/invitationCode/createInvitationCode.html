@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <link rel="stylesheet" th:href="@{/layuiadmin/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/layuiadmin/style/admin.css}" media="all">
+</head>
+<body>
+
+
+<div class="layui-fluid">
+    <div class="LM-container" style="border: 1px solid #f2f2f2;border-radius: 5px;background-color: #ffffff;">
+        <div class="LM-main" style="margin: 10px 10px 10px 10px;">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>哔哩哔哩-运行日志</legend>
+            </fieldset>
+            <!--<form class="layui-form layui-form-pane" lay-filter="form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所属渠道</label>
+                    <div class="layui-input-inline">
+                        <select name="channelId" lay-verify="required" >
+                            <option value="" >请选择渠道</option>
+
+                            <option th:each="c, State : ${channel}" th:value="${c.id}" th:text="${c.name}"></option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">生成数量</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="num" placeholder="请输入数量" lay-verify="number" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">有效期</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" lay-key="1">
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <div class="layui-input-inline">
+                        <input type="hidden" name="id">
+                        <button type="button" class="layui-btn" lay-submit="submit" lay-filter="submit">提交</button>
+                        <button type="reset" class="layui-btn">重置</button>
+                    </div>
+                </div>
+            </form>-->
+
+            <pre class="layui-code layui-box layui-code-view layui-code-notepad" id="code">
+            </pre>
+            <button class="layui-btn" id="shoudong">手动运行</button>
+
+
+        </div>
+    </div>
+
+</div>
+
+<script th:src="@{/layuiadmin/layui/layui.js(t=1)}"></script>
+<script type="text/javascript" th:src="@{/app/jquery-1.8.0.min.js(t=1)}"></script>
+
+<script>
+
+
+    layui.use(['form','layer','laydate','code'], function(){
+        var layer = layui.layer;
+        var form = layui.form, laydate=layui.laydate ,$=layui.$;
+        //重新渲染
+
+            $.ajax({
+                url:"/code/doCreate",
+                async: false,
+                type:"POST",
+                dataType: "text",
+                beforeSend: function(obj) {
+                    layer.msg('请求中...', {
+                        icon: 16,
+                        shade: 0.01,
+                        time: 0
+                    })
+                },
+                success:function(data){
+
+                    var d=eval("("+data+")");
+                    console.log(d);
+                    if(d.code==200){
+                        $html='';
+                        $.each(d.data,function (index,value) {
+                            $html += "<li>"+ value+"</li>";
+                        })
+                        setTimeout(function () {
+                            $(".layui-code-ol").html($html)
+                        },100)
+                    }else{
+                        layer.alert("失败", {icon: 5}, function () {
+                            layer.closeAll();
+                        });
+                    }
+                    layer.closeAll();
+                },
+                error: function() {//请求异常回调
+                    layer.closeAll('loading');
+                    layer.msg('系统繁忙！');
+                }
+            })
+
+
+        layui.code({
+            title: '哔哩哔哩日志',
+            about: false,
+            skin: 'notepad', //如果要默认风格，不用设定该key。
+            height: '500px'
+        });
+
+    });
+
+    $('body').on('click','#shoudong', function () {
+        layui.use(['form','layer','laydate','code'], function(){
+            var layer = layui.layer;
+            var form = layui.form, laydate=layui.laydate ,$=layui.$;
+            $.ajax({
+                url: "/code/shoudong",
+                async: false,
+                type: "POST",
+                dataType: "text",
+                beforeSend: function (obj) {
+                    layer.msg('请求中...', {
+                        icon: 16,
+                        shade: 0.01,
+                        time: 0
+                    })
+                },
+                success: function (data) {
+
+                    var d = eval("(" + data + ")");
+                    console.log(d);
+                    if (d.code == 200) {
+                        layer.alert("运行成功!", {icon: 6}, function () {
+                            window.location.reload();//刷新父页面
+                            layer.closeAll();
+                        });
+                    } else {
+                        layer.alert("失败", {icon: 5}, function () {
+                            window.location.reload();//刷新父页面
+                            layer.closeAll();
+                        });
+                    }
+                },
+                error: function () {//请求异常回调
+                    layer.closeAll('loading');
+                    layer.msg('系统繁忙！');
+                }
+            })
+        });
+    })
+</script>
+</body>
+</html>

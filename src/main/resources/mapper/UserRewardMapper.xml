@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zero.system.mapper.UserRewardMapper">
+
+    <!-- 通过条件分页查询，返回数据集 -->
+    <select id="selectPageList" parameterType="com.zero.system.util.Page" resultType="java.util.HashMap" >
+
+        SELECT id id,`name` name ,reward_money rewardMoney,recharge_money rechargeMoney,state state,sort,sort FROM `user_reward`
+        <where>
+            <!--<if test="order.trainingName != null">
+                AND training_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+            </if>-->
+            <if test="userReward.name != null and userReward.name != ''">
+                AND `name` LIKE CONCAT('%',#{userReward.name,jdbcType=VARCHAR},'%')
+            </if>
+        </where>
+        limit #{userReward.start},#{userReward.rows}
+    </select>
+
+    <!-- 通过条件分页查询，返回总记录数 -->
+    <select id="selectPageCount" parameterType="com.zero.system.util.Page"  resultType="java.lang.Integer">
+        SELECT count(1) FROM `user_reward`
+        <where>
+           <!-- <if test="order.trainingName != null">
+                AND training_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="order.trainingName != null">
+                AND training_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+            </if>-->
+            <if test="userReward.name != null and userReward.name != ''">
+                AND `name` LIKE CONCAT('%',#{userReward.name,jdbcType=VARCHAR},'%')
+            </if>
+        </where>
+    </select>
+
+
+    <insert id="userRewardAdd">
+
+        insert into user_reward(name ,reward_money,recharge_money,state,sort)
+        VALUES (#{name},#{rewardMoney},#{rechargeMoney},#{state},#{sort})
+
+    </insert>
+
+    <select id="selectByIdA"  resultType="com.zero.system.entity.user.UserReward" >
+
+        SELECT id id,name name ,reward_money rewardMoney,recharge_money rechargeMoney,state state,sort sort FROM `user_reward`
+        <where>
+            <!--<if test="order.trainingName != null">
+                AND training_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+            </if>-->
+            <if test="id != 0">
+                AND id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <update id="userRewardEdit" >
+        update user_reward set name =#{name} ,reward_money=#{rewardMoney},recharge_money=#{rechargeMoney},state=#{state},sort=sort where id =#{id}
+    </update>
+    <select id="selectList" resultType="com.zero.system.entity.user.UserReward">
+         SELECT id id,name name ,reward_money rewardMoney,recharge_money rechargeMoney,state state ,sort sort FROM `user_reward` where state=1 order by sort
+    </select>
+    <update id="updateState">
+        update user_reward set state=#{state} where id=#{id}
+    </update>
+    <select id="selectListBySort" resultType="com.zero.system.entity.user.UserReward">
+         SELECT id id,name name ,reward_money rewardMoney,recharge_money rechargeMoney,state state ,sort sort FROM `user_reward` where state=1
+         order by sort DESC
+    </select>
+
+    <delete id="delectAll">
+
+        delete from `user_reward`;
+
+    </delete>
+</mapper>

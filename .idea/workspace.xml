@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="93d0fb80-1dde-4ccd-8246-e5cf5dbc5a12" name="Default Changelist" comment="提交" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:\idea\IntelliJ IDEA 2020.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1kSpHBXuszbbFqxxUSWeP6eH0Wm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/app" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.zero.system.mapper" />
+      <recent name="com.zero.system.service.Impl" />
+      <recent name="com.zero.system.service" />
+      <recent name="com.zero.system.util" />
+      <recent name="com.zero.system.entity" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\manager-pian\src\main\resources\static\app" />
+      <recent name="D:\manager-pian\src\main\resources\mapper" />
+      <recent name="D:\manager-pian\src\main\java\com\zero\system\entity" />
+      <recent name="D:\manager-pian\src\main\resources\templates\manager\app" />
+      <recent name="D:\manager-pian\src\main\resources\static\app\images" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ManagerSystemApplication">
+    <configuration name="CodeUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.zero.system.util.CodeUtil" />
+      <module name="manager-system" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zero.system.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ManagerSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="manager-system" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.zero.system.ManagerSystemApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CodeUtil" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="93d0fb80-1dde-4ccd-8246-e5cf5dbc5a12" name="Default Changelist" comment="" />
+      <created>1591792561069</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591792561069</updated>
+      <workItem from="1591792562385" duration="60070000" />
+      <workItem from="1591883677165" duration="63448000" />
+      <workItem from="1592537035783" duration="10619000" />
+      <workItem from="1592826107359" duration="2695000" />
+      <workItem from="1592880433147" duration="4282000" />
+      <workItem from="1592928997667" duration="4620000" />
+      <workItem from="1593391570629" duration="38000" />
+      <workItem from="1593419075173" duration="2995000" />
+      <workItem from="1593519466028" duration="2083000" />
+      <workItem from="1593652250152" duration="3429000" />
+      <workItem from="1605703763404" duration="4820000" />
+      <workItem from="1606198715512" duration="489000" />
+      <workItem from="1606207402972" duration="47073000" />
+      <workItem from="1606380189915" duration="23196000" />
+      <workItem from="1606698740985" duration="1213000" />
+      <workItem from="1606700748052" duration="87000" />
+      <workItem from="1606701112351" duration="29000" />
+      <workItem from="1606701432281" duration="52000" />
+      <workItem from="1606702991456" duration="17000" />
+      <workItem from="1606707442981" duration="7000" />
+      <workItem from="1606707517071" duration="7642000" />
+    </task>
+    <task id="LOCAL-00001" summary="添加微信登录api">
+      <created>1591793023502</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591793023502</updated>
+    </task>
+    <task id="LOCAL-00002" summary="添加微信登录api">
+      <created>1591796081385</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1591796081385</updated>
+    </task>
+    <task id="LOCAL-00003" summary="添加前台页面">
+      <created>1591799143558</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1591799143558</updated>
+    </task>
+    <task id="LOCAL-00004" summary="添加前台页面">
+      <created>1591844554044</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1591844554044</updated>
+    </task>
+    <task id="LOCAL-00005" summary="添加前台页面">
+      <created>1591848958261</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1591848958261</updated>
+    </task>
+    <task id="LOCAL-00006" summary="修改订单添加bug 前台页面显示问题">
+      <created>1591873686716</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1591873686716</updated>
+    </task>
+    <task id="LOCAL-00007" summary="修改">
+      <created>1591937834995</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1591937834995</updated>
+    </task>
+    <task id="LOCAL-00008" summary="修改">
+      <created>1591940697428</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1591940697428</updated>
+    </task>
+    <task id="LOCAL-00009" summary="修改">
+      <created>1591963743225</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1591963743225</updated>
+    </task>
+    <task id="LOCAL-00010" summary="增加 最后一关限制信息">
+      <created>1592267852865</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1592267852865</updated>
+    </task>
+    <task id="LOCAL-00011" summary="提交">
+      <created>1592818235213</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1592818235213</updated>
+    </task>
+    <task id="LOCAL-00012" summary="提交">
+      <created>1593593450545</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1593593450545</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加微信登录api" />
+    <MESSAGE value="添加前台页面" />
+    <MESSAGE value="修改订单添加bug 前台页面显示问题" />
+    <MESSAGE value="修改" />
+    <MESSAGE value="增加 最后一关限制信息" />
+    <MESSAGE value="提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2117" y="100" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606381078309">
+      <screen x="1982" y="0" width="1363" height="891" />
+    </state>
+    <state x="2117" y="100" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606381078309" />
+    <state x="2468" y="153" key="#com.intellij.ide.util.MemberChooser" timestamp="1606392318458">
+      <screen x="1982" y="0" width="1363" height="891" />
+    </state>
+    <state x="2468" y="153" key="#com.intellij.ide.util.MemberChooser/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606392318458" />
+    <state x="2443" y="200" key="FileChooserDialogImpl" timestamp="1606199199244">
+      <screen x="1982" y="0" width="1363" height="891" />
+    </state>
+    <state x="2443" y="200" key="FileChooserDialogImpl/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606199199244" />
+    <state width="1314" height="142" key="GridCell.Tab.0.bottom" timestamp="1606721994785">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state width="1320" height="138" key="GridCell.Tab.0.bottom/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605769018843" />
+    <state width="1320" height="2" key="GridCell.Tab.0.bottom/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606449225360" />
+    <state width="1314" height="142" key="GridCell.Tab.0.bottom/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606721994785" />
+    <state width="1314" height="142" key="GridCell.Tab.0.center" timestamp="1606721994785">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state width="1320" height="138" key="GridCell.Tab.0.center/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605769018842" />
+    <state width="1320" height="2" key="GridCell.Tab.0.center/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606449225360" />
+    <state width="1314" height="142" key="GridCell.Tab.0.center/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606721994785" />
+    <state width="1314" height="142" key="GridCell.Tab.0.left" timestamp="1606721994784">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state width="1320" height="138" key="GridCell.Tab.0.left/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605769018842" />
+    <state width="1320" height="2" key="GridCell.Tab.0.left/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606449225359" />
+    <state width="1314" height="142" key="GridCell.Tab.0.left/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606721994784" />
+    <state width="1314" height="142" key="GridCell.Tab.0.right" timestamp="1606721994785">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state width="1320" height="138" key="GridCell.Tab.0.right/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605769018842" />
+    <state width="1320" height="2" key="GridCell.Tab.0.right/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606449225360" />
+    <state width="1314" height="142" key="GridCell.Tab.0.right/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606721994785" />
+    <state width="1314" height="478" key="GridCell.Tab.1.bottom" timestamp="1606721756966">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state width="1320" height="138" key="GridCell.Tab.1.bottom/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605769018843" />
+    <state width="1320" height="2" key="GridCell.Tab.1.bottom/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606449225141" />
+    <state width="1314" height="478" key="GridCell.Tab.1.bottom/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606721756966" />
+    <state width="1314" height="478" key="GridCell.Tab.1.center" timestamp="1606721756966">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state width="1320" height="138" key="GridCell.Tab.1.center/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605769018843" />
+    <state width="1320" height="2" key="GridCell.Tab.1.center/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606449225139" />
+    <state width="1314" height="478" key="GridCell.Tab.1.center/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606721756966" />
+    <state width="1314" height="478" key="GridCell.Tab.1.left" timestamp="1606721756966">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state width="1320" height="138" key="GridCell.Tab.1.left/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605769018843" />
+    <state width="1320" height="2" key="GridCell.Tab.1.left/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606449225139" />
+    <state width="1314" height="478" key="GridCell.Tab.1.left/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606721756966" />
+    <state width="1314" height="478" key="GridCell.Tab.1.right" timestamp="1606721756966">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state width="1320" height="138" key="GridCell.Tab.1.right/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605769018843" />
+    <state width="1320" height="2" key="GridCell.Tab.1.right/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606449225140" />
+    <state width="1314" height="478" key="GridCell.Tab.1.right/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606721756966" />
+    <state width="1314" height="478" key="GridCell.Tab.2.bottom" timestamp="1606721756966">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state width="1320" height="138" key="GridCell.Tab.2.bottom/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605769018844" />
+    <state width="1320" height="2" key="GridCell.Tab.2.bottom/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606449225142" />
+    <state width="1314" height="478" key="GridCell.Tab.2.bottom/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606721756966" />
+    <state width="1314" height="478" key="GridCell.Tab.2.center" timestamp="1606721756966">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state width="1320" height="138" key="GridCell.Tab.2.center/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605769018844" />
+    <state width="1320" height="2" key="GridCell.Tab.2.center/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606449225141" />
+    <state width="1314" height="478" key="GridCell.Tab.2.center/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606721756966" />
+    <state width="1314" height="478" key="GridCell.Tab.2.left" timestamp="1606721756966">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state width="1320" height="138" key="GridCell.Tab.2.left/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605769018843" />
+    <state width="1320" height="2" key="GridCell.Tab.2.left/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606449225141" />
+    <state width="1314" height="478" key="GridCell.Tab.2.left/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606721756966" />
+    <state width="1314" height="478" key="GridCell.Tab.2.right" timestamp="1606721756966">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state width="1320" height="138" key="GridCell.Tab.2.right/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605769018844" />
+    <state width="1320" height="2" key="GridCell.Tab.2.right/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606449225142" />
+    <state width="1314" height="478" key="GridCell.Tab.2.right/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606721756966" />
+    <state x="2074" y="92" width="1179" height="707" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1606377494354">
+      <screen x="1982" y="0" width="1363" height="891" />
+    </state>
+    <state x="2074" y="92" width="1179" height="707" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606377494354" />
+    <state x="2259" y="55" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606305507921">
+      <screen x="1982" y="0" width="1363" height="891" />
+    </state>
+    <state x="2259" y="55" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606305507921" />
+    <state x="2489" y="360" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606467183617">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state x="2485" y="360" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605704709204" />
+    <state x="2489" y="360" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606467183617" />
+    <state x="2129" y="181" width="1068" height="606" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1606207659843">
+      <screen x="1982" y="0" width="1363" height="891" />
+    </state>
+    <state x="2129" y="181" width="1068" height="606" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606207659843" />
+    <state x="2375" y="185" width="582" height="520" key="find.popup" timestamp="1606708001529">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state x="2371" y="185" width="584" height="520" key="find.popup/0.0.1824.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1605704317520" />
+    <state x="2375" y="185" width="582" height="520" key="find.popup/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606708001529" />
+    <state x="2328" y="203" key="run.anything.popup" timestamp="1606722281897">
+      <screen x="1988" y="0" width="1357" height="891" />
+    </state>
+    <state x="2323" y="203" key="run.anything.popup/0.0.1827.1069/1982.0.1363.891@1982.0.1363.891" timestamp="1606391740331" />
+    <state x="2328" y="203" key="run.anything.popup/0.0.1827.1069/1988.0.1357.891@1988.0.1357.891" timestamp="1606722281897" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.lang.String" memberName="hash" />
+        <PinnedItemInfo parentTag="java.util.HashMap$Node" memberName="key" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zero.system.mapper.InvitationCodeMapper">
+    <resultMap id="BaseResultMap" type="com.zero.system.entity.channel.InvitationCode">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="channel_id" jdbcType="INTEGER" property="channelId" />
+        <result column="invitation_code" jdbcType="INTEGER" property="invitationCode" />
+        <result column="state" jdbcType="VARCHAR" property="state" />
+        <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+        <result column="u_id" jdbcType="INTEGER" property="uId" />
+        <result column="activation_time" jdbcType="DATE" property="activationTime" />
+        <result column="overdue_time" jdbcType="DATE" property="overdueTime" />
+        <result column="channelName" jdbcType="VARCHAR" property="channelName" />
+    </resultMap>
+
+
+
+    <select id="queryList"  resultMap="BaseResultMap">
+        <!-- 根据条件查询 所有信息 -->
+        SELECT
+        i.*,
+        c.name AS channelName
+        FROM
+        invitation_code AS i,
+        channel AS c
+
+
+        <where>
+                c.id = i.channel_id
+
+
+            <if test="icode!=null">  and i.invitation_code LIKE concat("%",#{icode},"%")  or  i.u_name LIKE concat("%",#{icode},"%") </if>
+            <if test="state!=null  and  state!=2 "> and i.state=#{state} </if>
+        </where>
+        ORDER by i.create_time DESC
+        limit #{startIndex},#{pagesize}
+    </select>
+
+    <select id="queryCount" resultType="int" >
+        select count(*) from invitation_code
+        <where>
+            <if test="icode!=null"> and invitation_code.invitation_code LIKE concat("%",#{icode},"%")  or  invitation_code.u_name LIKE concat("%",#{icode},"%")</if>
+            <if test="state!=null"> and invitation_code.state=#{state} </if>
+        </where>
+    </select>
+<!--    <select id="selectById"  resultType="com.zero.system.entity.channel.Channel">-->
+<!--        select channel.* from channel where id=#{id}-->
+<!--    </select>-->
+
+<!--    <update id="updateById">-->
+<!--        update  channel  set name= #{name}, update_time=now()   where id=#{id}-->
+<!--    </update>-->
+<!--    <update id="updateState">-->
+<!--        update  channel  set state= #{state},update_time=now()   where id=#{id}-->
+<!--    </update>-->
+<!--    <insert id="addChannel" >-->
+<!--        insert into  channel(name,state,create_time) values (#{name},#{state},#{createTime})-->
+<!--    </insert>-->
+
+    <insert id="addInvitationCode" >
+        insert into invitation_code (channel_id,invitation_code,u_id,state,create_time,overdue_time)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.channelId},#{item.invitationCode},#{item.uId},#{item.state},#{item.createTime},#{item.overdueTime})
+        </foreach>
+    </insert>
+    <select id="selectByCode"  resultType="com.zero.system.entity.channel.InvitationCode">
+       SELECT
+	id AS id,
+	channel_id AS channelId,
+	invitation_code AS invitationCode,
+	state,
+	create_time AS createTime,
+	u_id AS uId,
+	activation_time AS activationTime,
+	overdue_time AS overdueTime
+
+FROM
+	invitation_code
+WHERE
+	invitation_code = #{code}
+    </select>
+    <update id="updateUid" >
+        update invitation_code set u_id=#{uId},state=1,u_name=#{uName} where invitation_code=#{code}
+    </update>
+    <select id="veryUser" resultType="com.zero.system.entity.channel.InvitationCode">
+               SELECT
+	id AS id,
+	channel_id AS channelId,
+	invitation_code AS invitationCode,
+	state,
+	create_time AS createTime,
+	u_id AS uId,
+	activation_time AS activationTime,
+	overdue_time AS overdueTime
+
+FROM
+	invitation_code
+WHERE
+	u_id = #{uId}
+    </select>
+
+    <delete id="delectAll">
+
+        delete from invitation_code;
+
+    </delete>
+
+</mapper>

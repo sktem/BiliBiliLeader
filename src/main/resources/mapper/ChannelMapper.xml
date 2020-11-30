@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zero.system.mapper.ChannelMapper">
+    <resultMap id="BaseResultMap" type="com.zero.system.entity.channel.Channel">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="state" jdbcType="VARCHAR" property="state" />
+        <result column="create_time" jdbcType="DATE" property="createTime" />
+        <result column="update_time" jdbcType="DATE" property="updateTime" />
+    </resultMap>
+
+
+
+    <select id="queryList"  resultMap="BaseResultMap">
+        <!-- 根据条件查询 所有信息 -->
+        select
+        channel.*
+        from channel
+        <where>
+            <if test="name!=null"> and channel.name LIKE concat("%",#{name},"%") </if>
+
+        </where>
+        limit #{startIndex},#{pagesize}
+    </select>
+
+    <select id="queryCount" resultType="int" >
+        select count(*) from channel
+        <where>
+            <if test="name!=null"> and name LIKE concat("%",#{name},"%") </if>
+
+        </where>
+    </select>
+    <select id="selectByIdA"  resultType="com.zero.system.entity.channel.Channel">
+        select channel.* from channel where id=#{id}
+    </select>
+
+    <update id="updateById">
+        update  channel  set name= #{name}, update_time=now()   where id=#{id}
+    </update>
+    <update id="updateState">
+        update  channel  set state= #{state},update_time=now()   where id=#{id}
+    </update>
+    <insert id="addChannel" >
+        insert into  channel(name,state,create_time) values (#{name},#{state},#{createTime})
+    </insert>
+
+    <select id="selectList"  resultType="com.zero.system.entity.channel.Channel">
+        <!-- 根据条件查询 所有信息 -->
+        select
+        channel.*
+        from channel
+    </select>
+
+    <delete id="delectAll">
+
+        delete from `channel`;
+
+    </delete>
+</mapper>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zero.system.mapper.UserMapper">
+
+    <update id="updateByIdA" >
+        update user set open_tx_id =#{openTxId} where id =#{id}
+    </update>
+
+    <update id="updateBalance" >
+        update user set balance =#{balance} where id =#{id}
+    </update>
+
+    <update id="updateLastTime" >
+        update user set last_time = now() where id =#{id}
+    </update>
+
+    <insert id="userAdd">
+
+        insert into user(open_id,user_name,image,sex,reward_id,balance,withdrawal,state
+        ,create_time)
+        VALUES (#{openId},#{userName},#{image},#{sex},#{rewardId},#{balance},#{withdrawal},#{state},now())
+
+    </insert>
+    <!-- 通过条件分页查询，返回数据集 -->
+    <select id="selectPageList" parameterType="com.zero.system.util.Page" resultType="java.util.HashMap" >
+
+        SELECT u.id id,u.user_name userName ,u.image image,u.sex sex,u.reward_id rewardId,u.balance balance, ( SELECT  SUM(convert(w.withdrawal_money,decimal(18,2))) FROM withdrawal w  where u.id=w.user_id ) AS  withdrawal,u.state state
+        ,u.create_time createTime,u.last_time lastTime,( SELECT  i.invitation_code FROM invitation_code i  where i.u_id=u.id) AS invitationCode
+        FROM `user` as u where 1=1
+
+        <if test="user.invitationCode != null and user.invitationCode!=''">
+            and u.id IN (SELECT i.u_id FROM invitation_code i where i.invitation_code = #{user.invitationCode})
+        </if>
+
+        <!--<if test="order.trainingName != null">
+            AND training_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+        </if>-->
+            <if test="user.userName != null and user.userName!=''">
+                AND u.user_name LIKE CONCAT('%',#{user.userName,jdbcType=VARCHAR},'%')
+            </if>
+
+        ORDER by u.create_time DESC
+        limit #{user.start},#{user.rows}
+    </select>
+
+    <!-- 通过条件分页查询，返回总记录数 -->
+    <select id="selectPageCount" parameterType="com.zero.system.util.Page"  resultType="java.lang.Integer">
+        SELECT count(1) FROM `user`
+        <where>
+           <!-- <if test="order.trainingName != null">
+                AND training_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="order.trainingName != null">
+                AND training_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+            </if>-->
+            <if test="user.userName != null and user.userName!=''">
+                AND user_name LIKE CONCAT('%',#{user.userName,jdbcType=VARCHAR},'%')
+            </if>
+        </where>
+    </select>
+    <update id="updateRid">
+        update `user` set  reward_id=#{rId},balance =#{balance} where id=#{id}
+    </update>
+
+
+    <select id="selectByOpenId"  resultType="com.zero.system.entity.user.User" >
+
+        SELECT id id,open_id openId,open_tx_id openTxId,user_name userName ,image image,sex sex,reward_id rewardId,balance balance,withdrawal withdrawal,state state
+        ,create_time createTime,last_time lastTime
+        FROM `user`
+        <where>
+            <!--<if test="order.trainingName != null">
+                AND training_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+            </if>-->
+            <if test="id != null">
+                AND open_id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByIdA"  resultType="com.zero.system.entity.user.User" >
+
+        SELECT id id,open_id openId,open_tx_id openTxId,user_name userName ,image image,sex sex,reward_id rewardId,balance balance,withdrawal withdrawal,state state
+        ,create_time createTime,last_time lastTime
+        FROM `user`
+        <where>
+            <!--<if test="order.trainingName != null">
+                AND training_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+            </if>-->
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+        </where>
+    </select>
+<delete id="delUser">
+    delete  from   `user`  where id=#{id}
+</delete>
+
+    <delete id="delectAll">
+
+        delete from `user`;
+
+    </delete>
+</mapper>

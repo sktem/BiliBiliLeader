@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zero.system.mapper.ImageMapper">
+    <resultMap id="BaseResultMap" type="com.zero.system.entity.Image">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="reward_id" jdbcType="INTEGER" property="rewardId" />
+        <result column="identification" jdbcType="VARCHAR" property="identification" />
+        <result column="state" jdbcType="VARCHAR" property="state" />
+        <result column="create_time" jdbcType="DATE" property="createTime" />
+        <result column="update_time" jdbcType="DATE" property="updateTime" />
+        <result column="rewardName" jdbcType="DATE" property="rewardName" />
+
+    </resultMap>
+    <select id="selectByIdA"  resultType="com.zero.system.entity.Image">
+        select id id,reward_id rewardId,identification identification,state state,create_time createTime,update_time updateTime  from identification where id=#{id}
+    </select>
+
+
+    <select id="queryList"  resultMap="BaseResultMap">
+        <!-- 根据条件查询 所有信息 -->
+        select
+        i.*,u.name as rewardName
+        from identification as i,user_reward as u  where i.reward_id=u.id
+
+            <if test="rewardName!=null"> and u.name LIKE concat("%",#{rewardName},"%") </if>
+
+
+        limit #{startIndex},#{pagesize}
+    </select>
+
+    <select id="queryCount" resultType="int" >
+        select count(*) from identification as i, user_reward as u  where i.reward_id=u.id
+
+            <if test="rewardName!=null"> and u.name LIKE concat("%",#{rewardName},"%") </if>
+
+
+    </select>
+
+
+    <update id="addImage" useGeneratedKeys="true" keyProperty="id">
+        <if test="image.id!=null">
+         update identification set identification=#{image.identification},reward_id=#{rewardId},image=#{image.image},update_time=now() where id= #{image.id}</if>
+
+        <if test="image.id==null">
+           insert into identification (identification,reward_id,image,state,create_time) values (#{image.identification},#{rewardId},#{image.image},#{image.state},now())
+
+        </if>
+    </update>
+    <update id="updateRid">
+        update  identification set  reward_id=#{rewardId} where id=#{id}
+    </update>
+    <update id="updateState">
+        update  identification  set state= #{state},update_time=now()   where id=#{id}
+    </update>
+<!--    <insert id="addChannel" >-->
+<!--        insert into  channel(name,state,create_time) values (#{name},#{state},#{createTime})-->
+<!--    </insert>-->
+    <select id="selectImage" resultType="com.zero.system.entity.Image">
+      select identification.* from identification where reward_id=#{rewardId} and  state = 1
+    </select>
+    <delete id="delImage">
+        delete  from  identification where identification.id=#{id}
+    </delete>
+
+    <delete id="delectAll">
+
+        delete from identification;
+
+    </delete>
+</mapper>

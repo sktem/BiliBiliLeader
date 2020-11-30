@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <link rel="stylesheet" th:href="@{/layuiadmin/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/layuiadmin/style/admin.css}" media="all">
+</head>
+<body>
+
+
+
+<div class="layui-fluid">
+    <div class="LM-container" style="border: 1px solid #f2f2f2;border-radius: 5px;background-color: #ffffff;">
+        <div class="LM-main" style="margin: 10px 10px 10px 10px;">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="text-align: center">哔哩哔哩Cookie设置</legend>
+            </fieldset>
+            <input type="hidden" id="oauthKey">
+            <div style="text-align: center;"><span style="color: red">请使用手机APP扫码登录获取Cookie</span></div>
+            <div style="text-align: center;"><span style="color: red">扫码确认登录后点击二维码图片获取Cookie</span></div>
+            <div style="text-align: center;"><span style="color: red">获取Cookie成功后 请点击下面的修改按钮</span></div>
+            <div id="qrcode" style="text-align: center;"></div>
+            <div style="width:432px;margin-left: 35.5%;margin-top: 30px;text-align: center"><form class="layui-form layui-form-pane">
+                <input type="hidden" name="id" th:value="${Admin.id}">
+                <div class="layui-form-item" >
+                    <label class="layui-form-label">UserId:</label>
+                    <div class="layui-input-block">
+                        <input type="text" th:value="${Admin.UserId}" id="UserId" name="UserId" required lay-verify="required" placeholder="请填入你的DEDEUSERID（重要！！！）" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item" >
+                    <label class="layui-form-label">SessData:</label>
+                    <div class="layui-input-block">
+                        <input type="text" th:value="${Admin.SESSDATA}" id="SESSDATA" name="SESSDATA" required lay-verify="required" placeholder="请填入你的SESSDATA（重要！！！）" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item" >
+                    <label class="layui-form-label">BiliJct:
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" th:value="${Admin.csrf}" id="csrf" name="csrf" required lay-verify="required" placeholder="请填入你的BILI_JCT（重要！！！）" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <button class="layui-btn" lay-submit="" lay-filter="demo2">修改</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+
+            </form></div>
+
+
+
+        </div>
+    </div>
+
+</div>
+
+<!--<div class="layui-fluid">-->
+<!--    <div class="LM-container" style="border: 1px solid #f2f2f2;border-radius: 5px;background-color: #ffffff;">-->
+<!--        <div class="LM-main" style="margin: 10px 10px 10px 10px;height:400px;">-->
+<!--            <fieldset class="layui-elem-field layui-field-title">-->
+<!--                <legend style="text-align: center">自定义配置</legend>-->
+<!--            </fieldset>-->
+<!--            <div style="float: left;width:815px;text-align: center;margin-left: 380px"><form class="layui-form layui-form-pane">-->
+<!--                <input type="hidden" name="id" th:value="${Admin.id}">-->
+<!--                <div class="layui-form-item" >-->
+<!--                    <label class="layui-form-label" style="width:150px">接口调用延时(秒):</label>-->
+<!--                    <div class="layui-input-block" style="margin-left:150px">-->
+<!--                        <input type="text" th:value="${Admin.delayed}" id="delayed" name="delayed" required lay-verify="required" placeholder="请填入接口调用延时(秒)" autocomplete="off" class="layui-input">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="layui-form-item" >-->
+<!--                    <label class="layui-form-label" style="width:150px">微信推送:-->
+<!--                    </label>-->
+<!--                    <div class="layui-input-block" style="margin-left:150px">-->
+<!--                        <input type="text" th:value="${Admin.SCKEY}" id="SCKEY" name="SCKEY" required lay-verify="required" placeholder="请填入你的Server酱微信推送的SCKEY  微信关注:Server酱" autocomplete="off" class="layui-input">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="layui-form-item">-->
+<!--                    <button class="layui-btn" lay-submit="" lay-filter="demo2">修改</button>-->
+<!--                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+<!--                </div>-->
+
+<!--            </form></div>-->
+
+
+
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<script th:src="@{/layuiadmin/layui/layui.js(t=1)}"></script>
+<script type="text/javascript" th:src="@{/app/jquery-1.8.0.min.js(t=1)}"></script>
+<script type="text/javascript" th:src="@{/app/jquery.qrcode.min.js(t=1)}"></script>
+
+
+<script>
+    $.ajax({
+        url:"/bilibili/bilibiliCode",
+        async: false,
+        type:"POST",
+        dataType: "text",
+        success:function(data){
+            var d=eval("("+data+")");
+            console.log(d);
+            if(d.code==200){
+                $("#oauthKey").val(d.data.oauthKey)
+                console.log(d.data.url);
+                jQuery(function(){
+                    jQuery('#qrcode').qrcode(d.data.url);
+                })
+
+            }
+        },
+        error: function() {//请求异常回调
+            layer.closeAll('loading');
+            layer.msg('系统繁忙！');
+        }
+    })
+
+    $('body').on('click','#qrcode', function () {
+        $.ajax({
+            url:"/bilibili/bilibiliLoginInfo",
+            async: false,
+            type:"POST",
+            dataType: "text",
+            data:{"oauthKey":$("#oauthKey").val()},
+            success:function(data){
+                var d=eval("("+data+")");
+                console.log(d);
+                if(d.data == -4){
+                    layer.alert("请先扫描二维码!", {icon: 5}, function () {
+                        layer.closeAll();
+                    });
+                }else if(d.data == -5){
+                    layer.alert("请在APP确认登录!", {icon: 5}, function () {
+                        layer.closeAll();
+                    });
+                }else if(d.data == -2){
+                    layer.alert("请不要重复扫码!", {icon: 5}, function () {
+                        layer.closeAll();
+                    });
+                }else{
+                    layer.alert("获取Cookie成功!", {icon: 6}, function () {
+                        $("#UserId").val(getvar(d.data,"DedeUserID"))
+                        $("#SESSDATA").val(getvar(d.data,"SESSDATA"))
+                        $("#csrf").val(getvar(d.data,"bili_jct"))
+                        layer.closeAll();
+                    });
+                }
+
+
+            },
+            error: function() {//请求异常回调
+                layer.closeAll('loading');
+                layer.msg('系统繁忙！');
+            }
+        })
+
+
+    })
+
+    function getvar(url,par){
+        var urlsearch = url.split('?');
+        pstr = urlsearch[1].split('&');
+        for (var i = pstr.length - 1; i >= 0; i--) {
+            var tep = pstr[i].split("=");
+            if(tep[0] == par){
+                return tep[1];
+            }
+        }
+        return(false);
+    }
+
+</script>
+<script>
+    layui.use(['form','layer'], function(){
+        var form = layui.form;
+        var layer = layui.layer;
+        var $ = layui.$;
+        //重新渲染
+        form.render();
+        form.on('submit(demo2)', function(data){
+            $.ajax({
+                url:"/bilibili/doUpdate",
+                async: false,
+                type:"POST",
+                dataType: "text",
+                data:data.field,
+                success:function(data){
+                    var d=eval("("+data+")");
+                    console.log(d);
+                    if(d.code==200){
+                        layer.alert("修改成功", {icon: 6}, function () {
+
+                            layer.closeAll();
+                        });
+
+                    }else{
+                        layer.alert("修改失败", {icon: 5}, function () {
+                            layer.closeAll();
+                        });
+                    }
+                },
+                error: function() {//请求异常回调
+                    layer.closeAll('loading');
+                    layer.msg('系统繁忙！');
+                }
+            })
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

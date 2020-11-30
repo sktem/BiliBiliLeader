@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>渠道列表</title>
+    <link rel="stylesheet" th:href="@{/layuiadmin/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/layuiadmin/style/admin.css}" media="all">
+    <link rel="stylesheet" th:href="@{/font-awesome-4.7.0/css/font-awesome.min.css}">
+</head>
+<body>
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                <div class="layui-form-item">
+                    <div class="layui-inline" style="width: 250px">
+                        <label class="layui-form-label">渠道名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="name" name="name" placeholder="请输入" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+
+                    <div class="layui-inline">
+                        <button class="layui-btn layuiadmin-btn-admin" data-type="search_table">
+                            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-card-body">
+                <div style="padding-bottom: 10px;">
+
+                    <button class="layui-btn layuiadmin-btn-admin" data-type="add">添加</button>
+
+                </div>
+
+                <table id="table" lay-filter="table"></table>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/layuiadmin/layui/layui.js}"></script>
+
+    <script type="text/html" id="table_channel">
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="fa fa-pencil"></i>编辑</a>
+    </script>
+
+    <script>
+
+        layui.use(['jquery','layer', 'table','form'], function(){
+            var table = layui.table;
+            var layer = layui.layer;
+            var $ = layui.jquery;
+            var form=layui.form;
+            //执行一个 table 实例
+            table.render({
+                elem: '#table',
+                height: 450,
+                url: '/channel/channelList', //数据接口
+                title: '渠道列表',
+                page: true,
+                limit: 5,
+                limits: [5,10,15,20],
+                cols: [
+                    [ //表头
+                    {type: 'checkbox', fixed: 'center'},
+                    {field: 'id', title: '编号',align:'center', width:150,sort: true},
+                    {field: 'name', title: '渠道名称',align:'center', width:170},
+                        {field: 'state', title: '状态', align:'center',width: 170,
+                            templet: function (d) {
+                                var state = "";
+                                console.log(d.state);
+                                console.log(typeof (d.state));
+                                if (d.state ===1) {
+                                    state = "<input type='checkbox' value='" + d.id + "' id='status' lay-filter='stat' checked name='state'  lay-skin='switch' lay-text='' >";
+                                }
+                                else {
+                                    state = "<input type='checkbox' value='" + d.id + "' id='status' lay-filter='stat'  name='state'  lay-skin='switch' lay-text='' >";
+
+                                }
+
+                                return state;
+                            }},
+
+                    {field: 'createTime', title: '创建时间',align:'center', width: 170,templet:function(d){
+                        return showTime(d.createTime);
+                        }},
+                        {field: 'updateTime', title: '更新时间',align:'center', width: 170,templet:function(d){
+                                return showTime(d.updateTime);
+                            }},
+                    {fixed: 'right',title:'操作', width: 170, align:'center', toolbar: '#table_channel'}
+                    ]
+                ],
+                //用于搜索结果重载
+                id: 'sreload'
+            });
+
+            var active = {
+                search_table: function(){
+                    var name = $('#name');
+
+                    //执行重载
+                    table.reload('sreload', {
+                        //一定要加不然乱码
+                        method: 'post'
+                        ,page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                        ,where: {
+                            //表示传到后台的参数
+                            name: name.val()
+
+                        }
+                    });
+                },
+                add: function() {
+                    layer.open({
+                        type: 2,
+                        title: '添加渠道',
+                        skin: 'layui-layer-demo', //加上边框
+                        area: ['500px', '450px'], //宽高
+                        content: '/channel/addChannel'
+                    });
+                },
+                batchdel:function () {
+                    var checkAll = table.checkStatus('sreload');
+                    if(checkAll.data.length == 0){
+                        layer.msg('请选择数据进行删除');
+                    }else{
+                        layer.confirm('真的删除行么', function(){
+                            var jsonObj = {};
+                            for(var i=0;i<checkAll.data.length;i++){
+                                jsonObj["ids["+i+"]"] = checkAll.data[i].id;
+                            }
+                            $.ajax({
+                                url:'/channel/delChannel',
+                                data:jsonObj,
+                                dataType:'json',
+                                type:'post',
+                                success:function (data) {
+                                    if (data.success){
+                                        window.location.reload();
+                                    }else{
+                                        layer.msg(data.message);
+                                    }
+                                }
+                            })
+                        });
+                    }
+
+                }
+            };
+
+            $('.layui-btn.layuiadmin-btn-admin').on('click', function(){
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+
+            table.on('tool(table)', function(obj){ //注：tool 是工具条事件名，table 是 table 原始容器的属性 lay-filter="对应的值"
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值
+                if(layEvent === 'edit'){
+                    edit(data);
+                } else if(layEvent === 'del'){
+                    layer.confirm('真的删除行么', function(index){
+                        del(data,obj,index);
+                    });
+                }
+            });
+
+            function edit(data) {
+                layer.open({
+                    type: 2,
+                    title: '修改渠道信息',
+                    skin: 'layui-layer-demo', //加上边框
+                    area: ['500px', '450px'], //宽高
+                    method: 'post',
+                    content: '/channel/addChannel?type=edit&id='+data.id
+                });
+            }
+            //后边两个参数仅仅是因为要执行动态删除dom
+            function del(data,obj,index){
+                var jsonObj = {};
+                jsonObj["ids[0]"] = data.id;
+                $.ajax({
+                    url:'/manager/delAdmin',
+                    data:jsonObj,
+                    dataType:'json',
+                    type:'post',
+                    success:function (data) {
+                        if (data.success){
+                            obj.del(); //删除对应行（tr）的DOM结构
+                            layer.close(index);
+                        }else{
+                            layer.msg(data.message);
+                        }
+                    }
+                })
+            }
+            //监听开关事件
+            form.on('switch(stat)', function (data) {
+                var contexts;
+                var state;
+                var x = data.elem.checked;//判断开关状态
+                if (x==true) {
+                    contexts = "启用";
+                    state=1;
+                } else {
+                    contexts = "禁用";
+                    state=0;
+                }
+                //自定义弹窗
+                layer.open({
+                    content: "你确定要"+contexts+"?"
+                    , btn: ['确定', '取消']
+                    , yes: function (index, layero) {
+                        //按钮确定【按钮一】的回调
+                        data.elem.checked = x;
+                        //对商品进行上架或下架处理
+                        $.ajax({
+                            type: "post",
+                            url: '/channel/updateState',
+                            data: {
+                                //上下架的参数
+                                "id": data.value,
+                                "state":state
+                            },
+                            success: function (data) {
+                                if (data.success) {
+                                    layer.msg(contexts+'成功',
+                                        // 提示的样式
+                                        {icon: 1, time: 2000});
+
+
+                                }else{
+                                    layer.msg(contexts+'失败',
+                                        // 提示的样式
+                                        {icon: 2, time: 2000});
+                                }
+                            }
+                        });
+
+                        form.render();
+                        layer.close(index);
+
+                    }
+                    , btn2: function (index, layero) {
+                        //按钮【按钮二】的回调
+                        data.elem.checked = !x;
+                        form.render();
+                        layer.close(index);
+                        //return false 开启该代码可禁止点击该按钮关闭
+                    }
+                    , cancel: function () {
+                        //右上角关闭回调
+                        data.elem.checked = !x;
+                        form.render();
+                        // return false; //开启该代码可禁止点击该按钮关闭
+                    }
+                });
+
+                return false;
+
+            });
+
+
+        });
+
+        //时间转换函数
+        function showTime(tempDate)
+        {
+            var d = new Date(tempDate);
+            var year = d.getFullYear();
+            console.log(year);
+            var month = d.getMonth();
+            console.log(month);
+            month++;
+            var day = d.getDate();
+            var hours = d.getHours();
+
+            var minutes = d.getMinutes();
+            var seconds = d.getSeconds();
+            month = month<10 ? "0"+month:month;
+            day = day<10 ? "0"+day:day;
+            hours = hours<10 ? "0"+hours:hours;
+            minutes = minutes<10 ? "0"+minutes:minutes;
+            seconds = seconds<10 ? "0"+seconds:seconds;
+
+
+            var time = year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds;
+            return time;
+        }
+
+    </script>
+</body>
+</html>

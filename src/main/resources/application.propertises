@@ -1,0 +1,18 @@
+mybatis-plus.mapper-locations=classpath:mapper/*.xml,classpath:mapper/*/.xml
+mybatis-plus.type-aliases-package=com.zero.system.entity,com.zero.system.entity.*.*
+mybatis-plus.global-config.id-type=3
+#驼峰下划线转换
+mybatis-plus.global-config.db-column-underline=true
+#刷新mapper 调试神器
+mybatis-plus.global-config.refresh-mapper=true
+#数据库大写下划线转换
+mybatis-plus.global-config.capital-mode=true
+#Sequence序列接口实现类配置
+mybatis-plus.global-config.key-generator=com.baomidou.mybatisplus.incrementer.OracleKeyGenerator
+#配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId）
+mybatis-plus.configuration.map-underscore-to-camel-case=true
+mybatis-plus.configuration.cache-enabled=false
+# 上传文件总的最大值
+spring.servlet.multipart.max-request-size=10MB
+# 单个文件的最大值
+spring.servlet.multipart.max-file-size=10MB

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zero.system.mapper.BilibiliLogMapper">
+
+
+
+    <insert id="BilibiliLogAdd" parameterType="BilibiliLog">
+        insert into Bilibili_Log(aid,text,create_time)
+        values (#{aid},#{text},#{createTime})
+    </insert>
+
+
+    <select id="selectByAid"  resultType="BilibiliLog">
+        select id,aid,text,create_time from Bilibili_Log
+        where TO_DAYS(create_time) = TO_DAYS(NOW()) and aid=#{aid}
+        order by create_time desc
+        limit 1
+    </select>
+
+    <select id="selectByAidList"  resultType="BilibiliLog">
+        select id,aid,text,create_time from Bilibili_Log where aid=#{aid} and TO_DAYS(create_time) = TO_DAYS(NOW())
+
+    </select>
+
+</mapper>

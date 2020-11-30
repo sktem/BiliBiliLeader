@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zero.system.mapper.SiteConfigurationMapper">
+
+
+    <!-- 通过条件分页查询，返回总记录数 -->
+    <select id="selectByIdA"   resultType="com.zero.system.entity.siteConfiguration.SiteConfiguration">
+        SELECT id id,name name,logo_url logoUrl,tips_last tipsLast,qq qq,reward_id rewardId,tips tips,title title,keyword keyword,entry_domain_name entryDomainName FROM `site_configuration`
+        <where>
+            <!-- <if test="order.trainingName != null">
+                 AND training_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+             </if>
+             <if test="order.trainingName != null">
+                 AND training_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+             </if>-->
+            <if test="id != 0">
+                AND id = #{id}
+            </if>
+        </where>
+    </select>
+    <update id="updateByIdA" >
+        update site_configuration set name =#{name} ,logo_url=#{logoUrl},qq=#{qq},reward_id=#{rewardId},tips=#{tips},tips_last=#{tipsLast},title=#{title},keyword=#{keyword},entry_domain_name=#{entryDomainName} where id =#{id}
+    </update>
+
+
+</mapper>

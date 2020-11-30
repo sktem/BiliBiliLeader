@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zero.system.mapper.WeChatMapper">
+
+
+    <!-- 通过条件分页查询，返回总记录数 -->
+    <select id="selectById"   resultType="com.zero.system.entity.wechat.WeChat">
+        SELECT app_id appId,secret secret,domain_name domainName FROM `wechat`
+    </select>
+    <update id="updateByIdA" >
+        update wechat set app_id =#{appId} ,secret=#{secret},domain_name=#{domainName}
+    </update>
+
+
+
+</mapper>
