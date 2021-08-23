@@ -48,13 +48,12 @@ INSERT INTO `admin` VALUES ('27', 'superNice', '$2a$10$EoeTmeoeNPBDH2g5qM.tYuQAk
 -- Table structure for `bilibili_log`
 -- ----------------------------
 DROP TABLE IF EXISTS `bilibili_log`;
-CREATE TABLE `bilibili_log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `aid` int(11) NOT NULL,
-  `text` text NOT NULL,
-  `create_time` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `bilibili_log` (
+    `id` int(11) NOT NULL,
+    `aid` int(11) NOT NULL,
+    `text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    `create_time` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bilibili_log
